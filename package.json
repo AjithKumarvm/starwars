@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AjithKumarvm/starwars"
+    "url": "https://github.com/AjithKumarvm/starwars.git"
   },
   "scripts": {
     "dev":"webpack-dev-server",
