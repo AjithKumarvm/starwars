@@ -1,14 +1,19 @@
 {
-  "name": "hello-world",
+  "name": "Starwars",
   "version": "1.0.0",
-  "description": "desc",
+  "description": "Starwars login using character name and birth year. also search for planets sorted by population and only Luke Skywalker has permission to search more than 15 times per minute",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AjithKumarvm/starwars"
+  },
   "scripts": {
-    "dev": "webpack -d --watch",
+    "dev":"webpack-dev-server",
+    "test": "webpack -d --watch",
     "build": "webpack -p --config webpack.production.config.js",
     "start": "http-server"
   },
-  "author": "Ajith",
+  "author": "Ajith Kumar VM",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.24.0",

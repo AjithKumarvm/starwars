@@ -11,7 +11,8 @@ import {VisibleHeader} from './Header';
 import {VisibleLogin} from './Login';
 import {VisibleSearch} from './Search';
 import {
-  changeUserData
+  changeUserData,
+  changeSearchHistoryBulk
 } from './../actions/actions';
 import './../scss/main.scss'; 
 
@@ -27,10 +28,15 @@ const store = createStore(reducer);
 const App = React.createClass({
   componentDidMount(){
     let userData = localStorage.getItem('userData') || '';
+    const {dispatch} = store;
     if(userData){
       userData = JSON.parse(userData);
-      const {dispatch} = store;
       dispatch(changeUserData(userData));
+    }
+    let searchHistory = localStorage.getItem('searchHistory') || '';
+    if(searchHistory){
+      searchHistory = JSON.parse(searchHistory);
+      dispatch(changeSearchHistoryBulk(searchHistory));
     }
   },
   render:()=>{
@@ -92,9 +98,14 @@ const pushState = (value) => {
   }
 };
 
+let ajaxCache = {};
 
 window.ajax = (method='GET', url, data)=>{
     return new Promise((resolve, reject)=>{
+        if(ajaxCache[url]){
+          resolve(ajaxCache[url]);
+          return;
+        }
         const client = new XMLHttpRequest();
         client.open(method, url, true);
         if (method == 'POST')
@@ -104,7 +115,8 @@ window.ajax = (method='GET', url, data)=>{
         client.onload = ()=>{
             if (client.status >= 200 && client.status < 400)
             {
-                resolve(JSON.parse(client.responseText));
+              ajaxCache[url] = JSON.parse(client.responseText);
+              resolve(JSON.parse(client.responseText));
             }
             else
             {
@@ -116,6 +128,15 @@ window.ajax = (method='GET', url, data)=>{
         };
         client.send(data);
     });
+};
+
+window.onbeforeunload = ()=>{
+  const {search} = store.getState();
+  let dNow = Date.now()-(1000*60*15);
+  let searchHistory = _.filter(search.history, function(o) { 
+    return o.timeStamp >= dNow; 
+  });
+  localStorage.setItem('searchHistory',JSON.stringify(searchHistory));
 };
 
 ReactDOM.render(

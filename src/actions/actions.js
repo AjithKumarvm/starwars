@@ -77,6 +77,35 @@ const changeAuthError = (message) => {
     message
   };
 };
+const changeSearchHistory = (keyword) => {
+  const entry = {
+    keyword,
+    timeStamp:Date.now()
+  };
+  return {
+    type: 'CHANGE_SEARCH_HISTORY',
+    entry
+  }
+};
+const changeSearchHistoryBulk = (list) => {
+  return {
+    type: 'CHANGE_SEARCH_HISTORY_BULK',
+    list
+  }
+};
+const changeSearchNetworkError = (error) => {
+  return {
+    type: 'CHANGE_SEARCH_NETWORK_ERROR',
+    error
+  };
+};
+const changeSearchQuota = (value) => {
+  return {
+    type: 'CHANGE_SEARCH_QUOTA',
+    value
+  };
+};
+
 
 export {
   changeSavedState,
@@ -91,6 +120,10 @@ export {
   changeSaveFlag,
   changeUserData,
   changeUserPref,
-  changeAuthError
+  changeAuthError,
+  changeSearchHistory,
+  changeSearchNetworkError,
+  changeSearchHistoryBulk,
+  changeSearchQuota
 };
 

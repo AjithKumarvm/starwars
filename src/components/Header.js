@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {changeUserData} from './../actions/actions';
 
-const Header = ({userData,logOut}) =>{
+const Header = ({userData,search,logOut}) =>{
   return <header>
   			<div className="userData">
   			{userData?
@@ -16,15 +16,17 @@ const Header = ({userData,logOut}) =>{
         </header>;
 };
 
-const VisibleHeader = connect(({userData})=>{
+const VisibleHeader = connect(({userData,search})=>{
   return{
-    userData
+    userData,
+    search
   };
 },(dispatch)=>{
 	return{
 		logOut:()=>{
 			dispatch(changeUserData(null));
 			localStorage.removeItem('userData');
+			location.reload();
 		}
 	}
 })(Header);

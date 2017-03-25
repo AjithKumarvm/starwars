@@ -9,11 +9,11 @@ const defaultState = {
     
   },
   userName:{
-    value:'Luke Skywalker',
+    value:null,
     error:null
   },
   password:{
-    value:'19BBY',
+    value:null,
     error:null
   },
   remember:{
@@ -24,7 +24,10 @@ const defaultState = {
   search:{
     keyword:null,
     results:[],
-    isFetching:false
+    isFetching:false,
+    history:[],
+    error:null,
+    quota:0
   },
   userData:null,
   preferences:null
@@ -119,7 +122,10 @@ const reducer = (state=defaultState, action)=>{
           ...state,
           search: {
             ...state.search,
-            keyword:value
+            keyword:value,
+            results:[],
+            isFetching:true,
+            error:false
           }
         };
       }
@@ -129,7 +135,38 @@ const reducer = (state=defaultState, action)=>{
           ...state,
           search: {
             ...state.search,
-            results:list
+            results:list,
+            isFetching:false
+          }
+        };
+      }
+      case "CHANGE_SEARCH_HISTORY":{
+        const {entry} = action;
+        return {
+          ...state,
+          search: {
+            ...state.search,
+            history:[entry,...state.search.history]
+          }
+        };
+      }
+      case "CHANGE_SEARCH_HISTORY_BULK":{
+        const {list} = action;
+        return {
+          ...state,
+          search: {
+            ...state.search,
+            history:list
+          }
+        };
+      }
+      case "CHANGE_SEARCH_NETWORK_ERROR":{
+        const {error} = action;
+        return {
+          ...state,
+          search: {
+            ...state.search,
+            error
           }
         };
       }
@@ -160,6 +197,16 @@ const reducer = (state=defaultState, action)=>{
           ...state,
           authError:message
         };
+      }
+      case 'CHANGE_SEARCH_QUOTA':{
+        const {value} = action;
+        return {
+          ...state,
+          search:{
+            ...state.search,
+            quota:value
+          }
+        }
       }
       default:
         return state;

@@ -22,6 +22,36 @@ html {
 .searchCard{
   max-width:800px;
 }
+.head_line{
+  margin: 8px;
+  margin-top: 6px;
+  position: relative;
+  font-size: 12px;
+  color: #47556c;
+  max-width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+}
+.result_headline{
+  max-width:94%;
+  margin-left:auto;
+  margin-right:auto;
+  color: grey;
+}
+.result_card{
+  background: white;
+  border:1px solid #e9eff6;
+  margin: 8px;
+  padding: 8px;
+  margin-top: 6px;
+  position: relative;
+  font-size: 14px;
+  color: #47556c;
+  max-width:94%;
+  margin-left:auto;
+  margin-right:auto;
+}
 .login_button{
   font-size: 14px;
   background-color: #27AE51;
@@ -48,6 +78,23 @@ html {
 }
 .logout_button{
   float: right;
+}
+.planet_name{
+  width: 70%;
+  display: inline-block;
+}
+.planet_popl{
+  width: 30%;
+  display: inline-block;
+  text-align: right;
+}
+.searchHits{
+  float: left;
+  font-size: 12px;
+}
+.search_error{
+  color: red;
+  font-size: 12px;
 }
 
 *,

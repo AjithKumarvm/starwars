@@ -48,25 +48,20 @@ const validateLogin = () =>{
 		dispatch(changeLoader('AUTH',true));
 		ajax('GET', serverUrl+'people').then((resp) => {
 			dispatch(changeLoader('AUTH',false));
-	        if (resp.count){
-	          console.log('results',resp.results);
+	        if (resp && resp.count){
 	          let authResult = _.find(resp.results, function(o) { 
-	          	console.log('u',userName.value);
 	          	return o.name == userName.value && o.birth_year == password.value 
 	          }) || null;
 	          if(authResult){
-	          	console.log('Login success');
 	          	dispatch(changeUserData(authResult));
 	          	dispatch(changeAuthError(null));
 	          	saveAuth(authResult);
 	          }else{
-	          	console.log('Login failed');
 	          	dispatch(changeUserData(null));
 	          	dispatch(changeAuthError('Invalid Credentials'));
 	          	saveAuth(null);
 	          }
 	        }else{
-	        	console.log('Login failed');
 	        	dispatch(changeUserData(false));
 	          	dispatch(changeAuthError('Invalid Credentials'));
 	          	saveAuth(null);
@@ -74,7 +69,6 @@ const validateLogin = () =>{
 	      }).catch(()=>{
 	      	dispatch(changeLoader('AUTH',false));
 	        dispatch(changeAuthError('Network Error'));
-	        console.log('network error');
 	      });
 	}
 };
@@ -97,7 +91,6 @@ const Login = () =>{
 };
 
 const VisibleUsername = connect(({userName})=>{
-	console.log(userName);
 	return {
 		value:userName.value,
 		error:userName.error
