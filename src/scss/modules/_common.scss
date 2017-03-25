@@ -1,0 +1,238 @@
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.container{
+  margin: 14px;
+}
+.card{
+  background: white;
+  border:1px solid #e9eff6;
+  margin: 8px;
+  padding: 8px;
+  margin-top: 6px;
+  position: relative;
+  font-size: 14px;
+  color: #47556c;
+  max-width:400px;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+}
+.searchCard{
+  max-width:800px;
+}
+.login_button{
+  font-size: 14px;
+  background-color: #27AE51;
+  padding: 14px;
+  display: inherit;
+  margin:auto;
+  min-width: 200px;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
+  transition: 200ms;
+}
+.login_button:hover{
+  color: white;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+  transition: 200ms;
+}
+.authError{
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: red;
+}
+.logout_button{
+  float: right;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.group {
+  position: relative;
+  margin-top: 35px;
+  margin-bottom:15px;
+  margin-right:10px;
+  margin-left:10px;
+}
+
+.inputMaterial {
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ABABAB;
+  background: none;
+}
+.inputMaterial.invalid {
+  border-bottom: 1px solid red;
+}
+.inputMaterial:focus {
+  outline: none;
+}
+.group .error
+{
+  width: 100%;
+  display: block;
+  font-size: 12px;
+  color: red;
+  text-align: right;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* LABEL ======================================= */
+label {
+  color: #ababab;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  top: 0px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+/* active state */
+.inputMaterial:focus ~ label, .inputMaterial:valid ~ label,label.small {
+  top: -20px;
+  font-size: 14px;
+  color: #ababab;
+}
+.inputMaterial:focus ~ label.invalid {
+  color: red;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+}
+.bar.invalid:before, .bar.invalid:after
+{
+  background: red;
+}
+
+.bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #ABABAB;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+/* active state */
+.inputMaterial:focus ~ .bar:before, .inputMaterial:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* active state */
+.inputMaterial:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #5264AE;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #5264AE;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #5264AE;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+/*check box*/
+.lbl {
+    position: relative;
+    display: block;
+    height: 20px;
+    width: 44px;
+    background: rgba(142, 142, 142, 0.61);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .lbl:after {
+    position: absolute;
+    left: -2px;
+    top: -3px;
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 100px;
+    background: #e5e5e5;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
+    content: '';
+    transition: all 0.3s ease;
+  }
+  .lbl:active:after {
+    transform: scale(1.15, 0.85);
+  }
+  .cbx:checked ~ label {
+    background: rgba(31, 192, 85, 0.5);
+  }
+  .cbx:checked ~ label:after {
+    left: 20px;
+    background: rgb(31, 192, 85);
+  }
+  .cbx:disabled ~ label {
+    background: #d5d5d5;
+    pointer-events: none;
+  }
+  .cbx:disabled ~ label:after {
+    background: #bcbdbc;
+  }
+  .press {
+    display: inline-block;
+    float: none;
+    margin-top: -3px;
+    vertical-align: middle;
+    margin-right: 14px;
+    cursor: pointer;
+  }
+  .hidden {
+    display: none;
+  }

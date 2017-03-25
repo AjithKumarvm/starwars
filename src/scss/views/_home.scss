@@ -1,0 +1,12 @@
+// File Name: _home.scss
+// Description: adds blue theme colors to modules
+// Used by: main.scss
+// Dependencies:
+// ------------------------------------------------------------
+body{
+	background:url(/dist/bg.jpg);
+	background-size:400px auto;
+	background-position:right bottom;
+	background-repeat:no-repeat;
+	min-height:100vh;
+}
